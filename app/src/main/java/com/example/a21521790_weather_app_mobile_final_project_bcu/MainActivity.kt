@@ -12,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
+    //
     private lateinit var editSearch: EditText
     private lateinit var btnSearch: Button
     private lateinit var btnChangeActivity: Button

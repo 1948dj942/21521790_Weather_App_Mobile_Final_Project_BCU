@@ -58,6 +58,7 @@
         android:layout_height="wrap_content" />
     <TextView
         android:layout_marginTop="2dp"
+        android:id="@+id/textviewState"
         android:layout_gravity="center"
         android:textSize="30dp"
         android:text="Status"
@@ -102,7 +103,7 @@
             <TextView
                 android:textSize="20dp"
                 android:text="Cloud"
-                android:id="@+id/textvieCloud"
+                android:id="@+id/textviewCloud"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

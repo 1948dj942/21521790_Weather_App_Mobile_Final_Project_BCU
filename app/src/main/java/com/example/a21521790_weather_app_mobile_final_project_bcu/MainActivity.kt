@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+    //Hi I change here!
     //EditText edtSearch
     //Button btnSearch, btnChangeActivity
     //Text txtName, txtCountry, txtTemp, txtState, txtHumidity, txtCloud, txtWind, txtDay

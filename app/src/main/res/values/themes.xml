@@ -1,9 +1,18 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme._21521790_Weather_App_Mobile_Final_Project_BCU" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme._21521790_Weather_App_Mobile_Final_Project_BCU" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">#122259</item>
+        <item name="colorPrimaryDark">#122259</item>
+        <item name="colorAccent">@color/cardview_light_background</item>
+        <item name="android:textColor">#fff</item>
     </style>
+    <!--style name="MyButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:shape">oval
+        </item>
+        <item name="cornerRadius">50dp</item>
 
+    </style -->
     <style name="Theme._21521790_Weather_App_Mobile_Final_Project_BCU" parent="Base.Theme._21521790_Weather_App_Mobile_Final_Project_BCU" />
 </resources>

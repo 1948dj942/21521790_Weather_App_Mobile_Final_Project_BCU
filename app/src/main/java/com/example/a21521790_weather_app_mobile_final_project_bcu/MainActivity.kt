@@ -10,9 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import org.w3c.dom.Text
-
 class MainActivity : AppCompatActivity() {
-    //
+    ////
     private lateinit var editSearch: EditText
     private lateinit var btnSearch: Button
     private lateinit var btnChangeActivity: Button
@@ -34,7 +33,6 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         mapping()
     }
 

@@ -202,6 +202,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -340,9 +341,149 @@
 
                         </RelativeLayout> <!-- wind speed-->
 
-                    </LinearLayout>
+                    </LinearLayout> <!-- pressure, humidity, wind speed -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ll_main_bg_below"
+                        android:layout_marginTop="0dp"
+                        android:background="@color/snow"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="@dimen/padding_x_small"
+                            android:id="@+id/rl_sunrise_wrapper">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="vertical"
+                                android:padding="@dimen/padding_x_small">
+
+                                <ImageView
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:src="@drawable/sunrise">
+                                </ImageView>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/tv_sunrise"
+                                    android:textSize="@dimen/text_x_large"
+                                    android:gravity="center"
+                                    android:textColor="@color/white"
+                                    android:text="@string/default_numbers">
+                                </TextView>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/text_med"
+                                    android:gravity="center"
+                                    android:textColor="@color/white"
+                                    android:text="@string/sunrise">
+                                </TextView>
+
+                            </LinearLayout>
+
+                        </RelativeLayout> <!-- sunrise-->
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="@dimen/padding_x_small"
+                            android:id="@+id/rl_sunset_wrapper">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="vertical"
+                                android:padding="@dimen/padding_x_small">
+
+                                <ImageView
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:src="@drawable/sunset">
+                                </ImageView>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/tv_sunset"
+                                    android:textSize="@dimen/text_x_large"
+                                    android:gravity="center"
+                                    android:textColor="@color/white"
+                                    android:text="@string/default_numbers">
+                                </TextView>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/text_med"
+                                    android:gravity="center"
+                                    android:textColor="@color/white"
+                                    android:text="@string/sunset">
+                                </TextView>
+
+                            </LinearLayout>
+
+                        </RelativeLayout> <!-- sunset-->
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="@dimen/padding_x_small"
+                            android:id="@+id/rl_temp_F_wrapper">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="vertical"
+                                android:padding="@dimen/padding_x_small">
+
+                                <ImageView
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:src="@drawable/temp_f">
+                                </ImageView>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/tv_temp_f"
+                                    android:textSize="@dimen/text_x_large"
+                                    android:gravity="center"
+                                    android:textColor="@color/white"
+                                    android:text="@string/default_numbers">
+                                </TextView>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/text_med"
+                                    android:gravity="center"
+                                    android:textColor="@color/white"
+                                    android:text="@string/temp_F">
+                                </TextView>
+
+                            </LinearLayout>
+
+                        </RelativeLayout> <!-- temp in F-->
+
+                    </LinearLayout> <!-- sunrise, sunset and temp in F  -->
 
                 </LinearLayout>
+
             </com.google.android.material.card.MaterialCardView>
 
         </RelativeLayout>

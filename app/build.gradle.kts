@@ -45,6 +45,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation("com.android.volley:volley:1.2.1")
-    implementation("com.squareup.picasso:picasso:2.8")
+
+    // Add the play-services-location dependency
+    implementation(libs.play.services.location)
+
+    // Add the retrofit dependencies
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
 }

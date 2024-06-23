@@ -14,6 +14,7 @@
         android:layout_centerInParent="true">
 
     </ProgressBar>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -33,7 +34,7 @@
                 android:background="@color/purple1">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_margin="@dimen/padding_large"
                     app:cardCornerRadius="@dimen/padding_x_small">
@@ -43,20 +44,307 @@
                         android:layout_height="match_parent"
                         android:id="@+id/et_get_city_name"
                         android:hint="@string/search_places"
-                        android:drawableStart="@drawable/ic_search"
+                        android:drawableStart="@drawable/ic_baseline_search_24"
                         android:drawablePadding="@dimen/padding_large"
                         android:imeOptions="actionSearch"
                         android:inputType="text"
                         android:paddingStart="@dimen/padding_large"
+                        android:paddingEnd="@dimen/padding_large"
                         android:textColor="@color/black"
                         android:drawableTint="@color/black"
                         android:background="@color/white">
 
-                    </EditText>
+                    </EditText> <!--. search bar-->
 
                 </androidx.cardview.widget.CardView>
 
             </RelativeLayout>
-        </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView> <!--. search bar-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rl_sub_layout"
+            android:layout_below="@id/cv_toolbar"
+            >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:id="@+id/iv_weather_bg"
+                    android:src="@color/snow">
+                </ImageView>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="@dimen/padding_large"
+                     android:layout_marginStart="@dimen/padding_x_large"
+                     android:orientation="vertical">
+
+                     <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:id="@+id/tv_date_and_time"
+                         android:textColor="@color/black"
+                         android:textSize="@dimen/text_large"
+                         android:text="@string/date"
+                         >
+
+                     </TextView> <!--.date and time-->
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginTop="@dimen/padding_large"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:id="@+id/tv_day_max_temp"
+                             android:layout_weight="3"
+                             android:textColor="@color/white"
+                             android:textSize="@dimen/text_large"
+                             android:text="@string/day">
+                         </TextView>
+
+                         <TextView
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:id="@+id/tv_day_min_temp"
+                             android:layout_weight="1"
+                             android:textColor="@color/white"
+                             android:textSize="@dimen/text_large"
+                             android:text="@string/day">
+                         </TextView>
+
+                     </LinearLayout><!--. max and min temp-->
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginTop="@dimen/padding_large"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="wrap_content"
+                             android:id="@+id/tv_temp"
+                             android:layout_weight="1"
+                             android:textColor="@color/white"
+                             android:textSize="@dimen/text_super_large"
+                             android:text="@string/main_temp">
+                         </TextView>
+                         
+                         <ImageView
+                             android:layout_width="100dp"
+                             android:layout_height="100dp"
+                             android:layout_marginTop="@dimen/padding_large"
+                             android:layout_marginEnd="@dimen/padding_large"
+                             android:id="@+id/iv_weather_icon"
+                             android:src="@drawable/clear">
+
+                         </ImageView>
+
+                     </LinearLayout> <!--. main temp-->
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginTop="@dimen/padding_large"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:id="@+id/tv_feels_alike"
+                             android:layout_weight="1"
+                             android:textColor="@color/white"
+                             android:textSize="@dimen/text_large"
+                             android:text="@string/feels_alike">
+                         </TextView>
+
+                         <TextView
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:id="@+id/tv_weather_status"
+                             android:layout_weight="1"
+                             android:textColor="@color/white"
+                             android:textSize="@dimen/text_large"
+                             android:text="@string/weather_status">
+                         </TextView>
+
+                     </LinearLayout><!--.feels alike temp and status-->
+
+                 </LinearLayout> <!-- main infos -->
+            </FrameLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/padding_x_large"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="@dimen/padding_x_large"
+                android:paddingBottom="@dimen/padding_x_large"
+                android:elevation="@dimen/padding_x_small"
+                app:cardCornerRadius="@dimen/padding_large"
+                app:cardMaxElevation="@dimen/padding_x_small"
+                app:cardElevation="@dimen/padding_x_small">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ll_main_bg_above"
+                        android:layout_marginTop="0dp"
+                        android:background="@color/snow"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="@dimen/padding_x_small"
+                            android:id="@+id/rl_pressure_wrapper">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="vertical"
+                                android:padding="@dimen/padding_x_small">
+
+                                <ImageView
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:src="@drawable/pressure">
+                                </ImageView>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/tv_pressure"
+                                    android:textSize="@dimen/text_x_large"
+                                    android:gravity="center"
+                                    android:textColor="@color/white"
+                                    android:text="@string/default_numbers">
+                                </TextView>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/text_med"
+                                    android:gravity="center"
+                                    android:textColor="@color/white"
+                                    android:text="@string/pressure">
+                                </TextView>
+
+                            </LinearLayout>
+
+                        </RelativeLayout> <!-- pressure-->
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="@dimen/padding_x_small"
+                            android:id="@+id/rl_humidity_wrapper">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="vertical"
+                                android:padding="@dimen/padding_x_small">
+
+                                <ImageView
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:src="@drawable/huminity">
+                                </ImageView>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/tv_humidity"
+                                    android:textSize="@dimen/text_x_large"
+                                    android:gravity="center"
+                                    android:textColor="@color/white"
+                                    android:text="@string/default_numbers">
+                                </TextView>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/text_med"
+                                    android:gravity="center"
+                                    android:textColor="@color/white"
+                                    android:text="@string/humidity">
+                                </TextView>
+
+                            </LinearLayout>
+
+                        </RelativeLayout> <!-- humidity-->
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="@dimen/padding_x_small"
+                            android:id="@+id/rl_wind_speed_wrapper">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="vertical"
+                                android:padding="@dimen/padding_x_small">
+
+                                <ImageView
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:src="@drawable/wind">
+                                </ImageView>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/tv_wind_speed"
+                                    android:textSize="@dimen/text_x_large"
+                                    android:gravity="center"
+                                    android:textColor="@color/white"
+                                    android:text="@string/default_numbers">
+                                </TextView>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/text_med"
+                                    android:gravity="center"
+                                    android:textColor="@color/white"
+                                    android:text="@string/wind_speed">
+                                </TextView>
+
+                            </LinearLayout>
+
+                        </RelativeLayout> <!-- wind speed-->
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </RelativeLayout>
     </RelativeLayout>
 </RelativeLayout>

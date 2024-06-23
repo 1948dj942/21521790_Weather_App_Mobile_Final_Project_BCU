@@ -3,7 +3,7 @@
 
     <string name="search_places">Searching City/States</string>
     <string name="date">25th June, 3:00 pm</string>
-    <string name="temp">100</string>
+    <string name="default_numbers">100</string>
     <string name="pressure">Pressure</string>
     <string name="max_temp">Max temperature</string>
     <string name="min_temp">Min temperature</string>

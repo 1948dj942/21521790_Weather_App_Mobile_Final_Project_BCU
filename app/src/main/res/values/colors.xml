@@ -2,6 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="purple1">#FFBB86FC</color>
+    <color name="purple2">#FF6200EE</color>
+    <color name="purple3">#FF3700B3</color>
+    <color name="teal1">#FF03DAC5</color>
+    <color name="teal2">#FF018786</color>
 
     <color name="thunderstorm">#1361FD</color>
     <color name="drizzle">#526FAB</color>
@@ -9,5 +14,5 @@
     <color name="snow">#987CFF</color>
     <color name="atmosphere">#A8B4CC</color>
     <color name="clear">#FF9D6F</color>
-    <color name="clouds">#454A4C</color>
+    <color name="cloudy">#454A4C</color>
 </resources>

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,7 +14,8 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
 
         <EditText
             android:id="@+id/edittextSearch"
@@ -279,15 +281,17 @@
         </LinearLayout> <!-- pressure -->
 
     </LinearLayout> <!-- more weather information 2 -->
+    <!-- updated day -->
     <TextView
-        android:textColor="#1a1818"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:text="Updated Day"
         android:id="@+id/textviewDay"
-        android:textSize="25dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" /> <!-- updated day -->
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Updated Day"
+        android:textColor="#1a1818"
+        android:textSize="25dp" />
+
     <Button
         android:id="@+id/buttonChangeActivity"
         android:layout_width="wrap_content"

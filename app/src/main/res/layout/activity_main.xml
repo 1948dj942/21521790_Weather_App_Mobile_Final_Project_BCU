@@ -124,6 +124,30 @@
                              android:text="@string/day">
                          </TextView>
 
+<!--
+                         <TextView
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:id="@+id/tv_latitude"
+                             android:layout_weight="3"
+                             android:text="Latitude: "
+                             android:textColor="@color/black"
+                             android:padding="@dimen/padding_large"
+                             android:textSize="@dimen/text_large">
+                         </TextView>
+
+                         <TextView
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:id="@+id/tv_longitude"
+                             android:layout_weight="3"
+                             android:text="Longitude: "
+                             android:textColor="@color/black"
+                             android:padding="@dimen/padding_large"
+                             android:textSize="@dimen/text_large">
+                         </TextView>
+--> <!--testing location request-->
+
                      </LinearLayout><!--. max and min temp-->
 
                      <LinearLayout

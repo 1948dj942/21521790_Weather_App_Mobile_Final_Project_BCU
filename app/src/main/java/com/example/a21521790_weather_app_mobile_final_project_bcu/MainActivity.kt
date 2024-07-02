@@ -6,33 +6,29 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
 import com.example.a21521790_weather_app_mobile_final_project_bcu.POJO.ModelClass
 import com.example.a21521790_weather_app_mobile_final_project_bcu.Utilities.APIUtilities
-import com.example.a21521790_weather_app_mobile_final_project_bcu.Utilities.API_Interface
 import com.example.a21521790_weather_app_mobile_final_project_bcu.databinding.ActivityMainBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.math.RoundingMode
 import java.text.SimpleDateFormat
+import java.time.Instant
+import java.time.ZoneId
 import java.util.Date
+import kotlin.math.roundToInt
 
 class MainActivity : AppCompatActivity() {
 
@@ -96,6 +92,7 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding.pbLoading.visibility = View.VISIBLE
         APIUtilities.getAPI_Interface()?.getCurrentWeatherData(latitude, longitude, API_KEY)?.enqueue(object :
             Callback<ModelClass>{
+            @RequiresApi(Build.VERSION_CODES.O)
             override fun onResponse(call: Call<ModelClass>, response: Response<ModelClass>) {
                 if(response.isSuccessful) {
                     setDataOnViews(response.body())
@@ -110,14 +107,51 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SimpleDateFormat", "SetTextI18n")
     private fun setDataOnViews(body: ModelClass?) {
         val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm")
         val currentDate = sdf.format(Date())
+
         activityMainBinding.tvDateAndTime.text = currentDate
         activityMainBinding.tvDayMaxTemp.text = "Day "+ body!!.main?.tempMax?.let { kelvinToCelsius(it) } + "°"
-        activityMainBinding.tvDayMinTemp.text = "Day "+ body.main?.tempMin?.let { kelvinToCelsius(it) } + "°"
+        activityMainBinding.tvDayMinTemp.text = "Night "+ body.main?.tempMin?.let { kelvinToCelsius(it) } + "°"
+
+        activityMainBinding.tvTemp.text = " "+ body.main?.temp?.let { kelvinToCelsius(it) } + "°"
+        activityMainBinding.tvFeelsAlike.text = " "+ body.main?.feelsLike?.let { kelvinToCelsius(it) } + "°"
+        activityMainBinding.tvWeatherStatus.text = body.weather[0].main
+        activityMainBinding.tvSunrise.text = body.sys?.sunrise?.let { timeStampToLocalDate(it.toLong()) }
+        activityMainBinding.tvSunset.text = body.sys?.sunset?.let { timeStampToLocalDate(it.toLong()) }
+        activityMainBinding.tvPressure.text = body.main?.pressure.toString()
+        activityMainBinding.tvHumidity.text = body.main?.humidity.toString() + " % "
+        activityMainBinding.tvWindSpeed.text = body.wind?.speed.toString() + " m/s"
+        activityMainBinding.tvTempF.text = "" + ((body.main?.temp?.let { kelvinToCelsius(it) })?.times(1.8)?.plus(32)!!.roundToInt())
+
+        activityMainBinding.etGetCityName.setText(body.name)
+
+        updateUI(body.weather[0].id)
+
+
+
     }
+
+    private fun updateUI(id: Int?) {
+
+
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private  fun timeStampToLocalDate(timeStamp: Long): String {
+        val localTime = timeStamp.let {
+            Instant.ofEpochSecond(it)
+                .atZone((ZoneId.systemDefault()))
+                .toLocalTime()
+        }
+
+        return localTime.toString()
+    }
+
 
     private fun kelvinToCelsius(temp: Double): Double {
         var intTemp = temp

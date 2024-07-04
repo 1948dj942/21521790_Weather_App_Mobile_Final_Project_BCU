@@ -18,4 +18,6 @@ interface API_Interface {
         @Query("q") cityName: String,
         @Query("appid") api_key: String
     ): Call<ModelClass>
+
+
 }

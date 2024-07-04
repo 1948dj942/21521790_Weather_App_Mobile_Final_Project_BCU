@@ -82,7 +82,7 @@
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
                         android:id="@+id/iv_weather_bg"
-                        android:src="@color/snow"></ImageView>
+                        android:src="@color/snow" />
 
                     <LinearLayout
                         android:layout_width="match_parent"

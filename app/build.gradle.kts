@@ -2,8 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
 }
-
-android {
+    android {
     namespace = "com.example.a21521790_weather_app_mobile_final_project_bcu"
     compileSdk = 34
 
@@ -34,7 +33,7 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
-        dataBinding = true
+        this.dataBinding = true
     }
 }
 
@@ -45,12 +44,12 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.media3.common)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    //
-    implementation("com.google.android.material:material:1.12.0")
+
     // Add the play-services-location dependency
     implementation(libs.play.services.location)
 

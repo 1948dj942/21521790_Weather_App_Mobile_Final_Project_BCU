@@ -9,6 +9,7 @@ import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
@@ -62,26 +63,42 @@ class MainActivity : AppCompatActivity() {
                 false
             }
         }
-
-
     }
 
     private fun getCityWeather(cityName: String) {
-        activityMainBinding.pbLoading.visibility = View.VISIBLE
+        //based input validation
+        if(cityName.isBlank()) {
+            Toast.makeText(this, "Please enter a city name", Toast.LENGTH_SHORT).show()
+                return
+        }
+        activityMainBinding.pbLoading.visibility = View.VISIBLE //show loading indicator
         APIUtilities.getAPI_Interface()?.getCityWeatherData(cityName, API_KEY)?.enqueue(object: Callback<ModelClass>
         {
-            @RequiresApi(Build.VERSION_CODES.O)
             override fun onResponse(call: Call<ModelClass>, response: Response<ModelClass>) {
-                setDataOnViews(response.body())
+                runOnUiThread { //update UI on the main thread
+                    activityMainBinding.pbLoading.visibility = View.GONE //hide loading indicator
+                    if(response.isSuccessful && response.body()!=null) {
+                        Log.d("API Response", "Success: ${response.body()}") // Log the response
+                        setDataOnViews(response.body())
+                    }
+                    else {
+                        //handle API errors
+                        val errorMessage = when(response.code()) {
+                            404 -> "City not found"
+                            401 -> "Invalid API key"
+                            else -> "Unknown error"
+                        }
+                        Toast.makeText(applicationContext, errorMessage, Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
-
             override fun onFailure(call: Call<ModelClass>, t: Throwable) {
-                Toast.makeText(applicationContext, "Not a valid City Name", Toast.LENGTH_SHORT).show()
+                runOnUiThread{
+                    activityMainBinding.pbLoading.visibility = View.GONE
+                    Toast.makeText(applicationContext, "Network error: ${t.message}", Toast.LENGTH_SHORT).show()
+                }
             }
-
         })
-
-
     }
 
     //@SuppressLint("SetTextI18n")
@@ -110,7 +127,6 @@ class MainActivity : AppCompatActivity() {
                             location.longitude.toString()
                         )
                     }
-
                 }
             }
             else {
@@ -118,7 +134,6 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Turn on location", Toast.LENGTH_SHORT).show()
                 val intent= Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                 startActivity(intent)
-
             }
         }
         else {
@@ -156,19 +171,20 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding.tvDayMaxTemp.text = "Day "+ body!!.main?.tempMax?.let { kelvinToCelsius(it) } + "°"
         activityMainBinding.tvDayMinTemp.text = "Night "+ body.main?.tempMin?.let { kelvinToCelsius(it) } + "°"
 
-        activityMainBinding.tvTemp.text = " "+ body.main?.temp?.let { kelvinToCelsius(it) } + "°"
-        activityMainBinding.tvFeelsAlike.text = " "+ body.main?.feelsLike?.let { kelvinToCelsius(it) } + "°"
-        activityMainBinding.tvWeatherStatus.text = body.weather[0].main
-        activityMainBinding.tvSunrise.text = body.sys?.sunrise?.let { timeStampToLocalDate(it.toLong()) }
-        activityMainBinding.tvSunset.text = body.sys?.sunset?.let { timeStampToLocalDate(it.toLong()) }
-        activityMainBinding.tvPressure.text = body.main?.pressure.toString()
-        activityMainBinding.tvHumidity.text = body.main?.humidity.toString() + " % "
-        activityMainBinding.tvWindSpeed.text = body.wind?.speed.toString() + " m/s"
-        activityMainBinding.tvTempF.text = "" + ((body.main?.temp?.let { kelvinToCelsius(it) })?.times(1.8)?.plus(32)!!.roundToInt())
+        activityMainBinding.tvWeatherStatus.text = body.weather.getOrNull(0)?.main ?: "N/A"
+        activityMainBinding.tvSunrise.text = body.sys?.sunrise?.let { timeStampToLocalDate(it.toLong()) } ?: "N/A"
+        activityMainBinding.tvSunset.text = body.sys?.sunset?.let { timeStampToLocalDate(it.toLong()) } ?: "N/A"
+        activityMainBinding.tvPressure.text = body.main?.pressure?.toString() ?: "N/A"
+        activityMainBinding.tvHumidity.text = (body.main?.humidity?.toString() ?: "N/A") + " %"
+        activityMainBinding.tvWindSpeed.text = (body.wind?.speed?.toString() ?: "N/A") + " m/s"
 
-        activityMainBinding.etGetCityName.setText(body.name)
+        val tempCelsius = body.main?.temp?.let { kelvinToCelsius(it) } ?: 0.0
+        activityMainBinding.tvTempF.text = ((tempCelsius * 1.8) + 32).roundToInt().toString()
 
-        updateUI(body.weather[0].id)
+        activityMainBinding.etGetCityName.setText(body.name ?: "")
+
+        val weatherId = body.weather.getOrNull(0)?.id
+        updateUI(weatherId)
     }
 
     private fun updateUI(id: Int?) {

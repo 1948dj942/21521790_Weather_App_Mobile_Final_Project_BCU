@@ -74,6 +74,7 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding.pbLoading.visibility = View.VISIBLE //show loading indicator
         APIUtilities.getAPI_Interface()?.getCityWeatherData(cityName, API_KEY)?.enqueue(object: Callback<ModelClass>
         {
+            @RequiresApi(Build.VERSION_CODES.O)
             override fun onResponse(call: Call<ModelClass>, response: Response<ModelClass>) {
                 runOnUiThread { //update UI on the main thread
                     activityMainBinding.pbLoading.visibility = View.GONE //hide loading indicator

@@ -199,7 +199,7 @@ class MainActivity : AppCompatActivity() {
                 activityMainBinding.rlSubLayout.background = ContextCompat.getDrawable(this@MainActivity, R.drawable.thunderstrom_bg)
                 activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(this@MainActivity, R.drawable.thunderstrom_bg)
                 activityMainBinding.ivWeatherBg.setImageResource(R.drawable.thunderstrom_bg)
-                activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.thunderstorm2)
+                activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.thunderstorm_)
             }
             //Drizzle
             in 300..321 -> {
@@ -210,7 +210,7 @@ class MainActivity : AppCompatActivity() {
                 activityMainBinding.rlSubLayout.background = ContextCompat.getDrawable(this@MainActivity, R.drawable.drizzle_bg)
                 activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(this@MainActivity, R.drawable.drizzle_bg)
                 activityMainBinding.ivWeatherBg.setImageResource(R.drawable.drizzle_bg)
-                activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.drizzle_1)
+                activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.drizzle_)
             }
             //Rain
             in 500..532 -> {
@@ -221,7 +221,7 @@ class MainActivity : AppCompatActivity() {
                 activityMainBinding.rlSubLayout.background = ContextCompat.getDrawable(this@MainActivity, R.drawable.rain_bg)
                 activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(this@MainActivity, R.drawable.rain_bg)
                 activityMainBinding.ivWeatherBg.setImageResource(R.drawable.rain_bg)
-                activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.rain_1)
+                activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.rain_)
             }
             //Snow
             in 600..622 -> {
@@ -232,7 +232,7 @@ class MainActivity : AppCompatActivity() {
                 activityMainBinding.rlSubLayout.background = ContextCompat.getDrawable(this@MainActivity, R.drawable.snow_bg)
                 activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(this@MainActivity, R.drawable.snow_bg)
                 activityMainBinding.ivWeatherBg.setImageResource(R.drawable.snow_bg)
-                activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.snow1)
+                activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.snow_)
             }
             //Atmosphere
             in 701..781 -> {
@@ -243,7 +243,7 @@ class MainActivity : AppCompatActivity() {
                 activityMainBinding.rlSubLayout.background = ContextCompat.getDrawable(this@MainActivity, R.drawable.atmosphere_bg)
                 activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(this@MainActivity, R.drawable.atmosphere_bg)
                 activityMainBinding.ivWeatherBg.setImageResource(R.drawable.atmosphere_bg)
-                activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.atmosphere_1)
+                activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.atmosphere_)
             }
             //Clear
             800 -> {
@@ -254,7 +254,7 @@ class MainActivity : AppCompatActivity() {
                 activityMainBinding.rlSubLayout.background = ContextCompat.getDrawable(this@MainActivity, R.drawable.clear_bg)
                 activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(this@MainActivity, R.drawable.clear_bg)
                 activityMainBinding.ivWeatherBg.setImageResource(R.drawable.clear_bg)
-                activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.clear_1)
+                activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.clear_)
             }
             //Clouds
             in 801..804 -> {
@@ -265,7 +265,7 @@ class MainActivity : AppCompatActivity() {
                 activityMainBinding.rlSubLayout.background = ContextCompat.getDrawable(this@MainActivity, R.drawable.clouds_bg)
                 activityMainBinding.llMainBgBelow.background = ContextCompat.getDrawable(this@MainActivity, R.drawable.clouds_bg)
                 activityMainBinding.ivWeatherBg.setImageResource(R.drawable.clouds_bg)
-                activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.cloud)
+                activityMainBinding.ivWeatherIcon.setImageResource(R.drawable.cloud_)
             }
         }
 

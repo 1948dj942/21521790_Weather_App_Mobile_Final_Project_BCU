@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
+    xmlns:tools="http://schemas.android.com/tools"
+    >
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -12,7 +12,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/pb_loading"
-            android:visibility="gone"
+            android:visibility="visible"
             android:layout_centerInParent="true"/>
 
         <RelativeLayout
@@ -43,6 +43,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:id="@+id/et_get_city_name"
+                            android:autofillHints=""
                             android:hint="@string/search_places"
                             android:drawableStart="@drawable/ic_baseline_search_24"
                             android:drawablePadding="@dimen/padding_large"
@@ -115,30 +116,6 @@
                                 android:textSize="@dimen/text_large"
                                 android:text="@string/night"/>
 
-                            <!--
-                                                     <TextView
-                                                         android:layout_width="match_parent"
-                                                         android:layout_height="wrap_content"
-                                                         android:id="@+id/tv_latitude"
-                                                         android:layout_weight="3"
-                                                         android:text="Latitude: "
-                                                         android:textColor="@color/black"
-                                                         android:padding="@dimen/padding_large"
-                                                         android:textSize="@dimen/text_large">
-                                                     </TextView>
-
-                                                     <TextView
-                                                         android:layout_width="match_parent"
-                                                         android:layout_height="wrap_content"
-                                                         android:id="@+id/tv_longitude"
-                                                         android:layout_weight="3"
-                                                         android:text="Longitude: "
-                                                         android:textColor="@color/black"
-                                                         android:padding="@dimen/padding_large"
-                                                         android:textSize="@dimen/text_large">
-                                                     </TextView>
-                            --> <!--testing location request-->
-
                         </LinearLayout><!--. max and min temp-->
 
                         <LinearLayout
@@ -146,6 +123,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/padding_large"
                             android:orientation="horizontal">
+
 
                             <TextView
                                 android:layout_width="0dp"
@@ -187,7 +165,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/tv_weather_status"
-                                android:layout_weight="1"
+                                android:layout_weight="3"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/text_large"
                                 android:text="@string/weather_status"/>
@@ -220,7 +198,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/ll_main_bg_above"
                             android:layout_marginTop="0dp"
-                            android:background="@color/snow"
+                            android:background="@drawable/snow_bg"
                             android:orientation="horizontal">
 
                             <RelativeLayout
@@ -349,7 +327,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/ll_main_bg_below"
                             android:layout_marginTop="0dp"
-                            android:background="@color/snow"
+                            android:background="@drawable/snow_bg"
                             android:orientation="horizontal">
 
                             <RelativeLayout

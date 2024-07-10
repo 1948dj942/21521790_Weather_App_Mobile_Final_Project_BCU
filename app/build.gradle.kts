@@ -32,9 +32,10 @@ plugins {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        this.dataBinding = true
-    }
+        buildFeatures {
+            this.dataBinding = true
+        }
+
 }
 
 dependencies {

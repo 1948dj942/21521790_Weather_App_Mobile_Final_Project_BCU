@@ -2,7 +2,7 @@
     <string name="app_name">21521790_Weather_App_Mobile_Final_Project_BCU</string>
 
     <string name="search_places">Searching City/States</string>
-    <string name="date">25th June, 3:00 pm</string>
+    <string name="date">25/06/2024 05:30</string>
     <string name="default_numbers">100</string>
     <string name="pressure">Pressure</string>
     <string name="max_temp">Max temperature</string>
@@ -14,7 +14,7 @@
     <string name="night">Night 29°C</string>
     <string name="main_temp">30°C</string>
     <string name="feels_alike">Feels like 36°C</string>
-    <string name="weather_status">Cloudy</string>
+    <string name="weather_status">Clouds</string>
     <string name="sunrise">Sunrise</string>
     <string name="sunset">Sunset</string>
 

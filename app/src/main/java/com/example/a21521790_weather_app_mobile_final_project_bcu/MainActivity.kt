@@ -65,58 +65,58 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getCityWeather(cityName: String) {
-        activityMainBinding.pbLoading.visibility = View.GONE
-        APIUtilities.getAPI_Interface()?.getCityWeatherData(cityName, API_KEY)?.enqueue(object :
-            Callback<ModelClass> {
-            @RequiresApi(Build.VERSION_CODES.O)
-            override fun onResponse(call: Call<ModelClass>, response: Response<ModelClass>) {
-                setDataOnViews(response.body())
-            }
-
-            override fun onFailure(call: Call<ModelClass>, p1: Throwable) {
-                Toast.makeText(applicationContext, "Not a valid city", Toast.LENGTH_SHORT).show()
-            }
-
-        })
-    }
-
 //    private fun getCityWeather(cityName: String) {
-//        //based input validation
-//        if(cityName.isBlank()) {
-//            Toast.makeText(this, "Please enter a city name", Toast.LENGTH_SHORT).show()
-//                return
-//        }
-//        activityMainBinding.pbLoading.visibility = View.VISIBLE //show loading indicator
-//        APIUtilities.getAPI_Interface()?.getCityWeatherData(cityName, API_KEY)?.enqueue(object: Callback<ModelClass>
-//        {
+//        activityMainBinding.pbLoading.visibility = View.GONE
+//        APIUtilities.getAPI_Interface()?.getCityWeatherData(cityName, API_KEY)?.enqueue(object :
+//            Callback<ModelClass> {
 //            @RequiresApi(Build.VERSION_CODES.O)
 //            override fun onResponse(call: Call<ModelClass>, response: Response<ModelClass>) {
-//                runOnUiThread { //update UI on the main thread
-//                    activityMainBinding.pbLoading.visibility = View.GONE //hide loading indicator
-//                    if(response.isSuccessful && response.body()!=null) {
-//                        Log.d("API Response", "Success: ${response.body()}") // Log the response
-//                        setDataOnViews(response.body())
-//                    }
-//                    else {
-//                        //handle API errors
-//                        val errorMessage = when(response.code()) {
-//                            404 -> "City not found"
-//                            401 -> "Invalid API key"
-//                            else -> "Unknown error"
-//                        }
-//                        Toast.makeText(applicationContext, errorMessage, Toast.LENGTH_SHORT).show()
-//                    }
-//                }
+//                setDataOnViews(response.body())
 //            }
+//
 //            override fun onFailure(call: Call<ModelClass>, t: Throwable) {
-//                runOnUiThread{
-//                    activityMainBinding.pbLoading.visibility = View.GONE
-//                    Toast.makeText(applicationContext, "Network error: ${t.message}", Toast.LENGTH_SHORT).show()
-//                }
+//                Toast.makeText(applicationContext, "Not a valid city", Toast.LENGTH_SHORT).show()
 //            }
+//
 //        })
 //    }
+
+    private fun getCityWeather(cityName: String) {
+        //based input validation
+        if(cityName.isBlank()) {
+            Toast.makeText(this, "Please enter a city name", Toast.LENGTH_SHORT).show()
+                return
+        }
+        activityMainBinding.pbLoading.visibility = View.VISIBLE //show loading indicator
+        APIUtilities.getAPI_Interface()?.getCityWeatherData(cityName, API_KEY)?.enqueue(object: Callback<ModelClass>
+        {
+            @RequiresApi(Build.VERSION_CODES.O)
+            override fun onResponse(call: Call<ModelClass>, response: Response<ModelClass>) {
+                runOnUiThread { //update UI on the main thread
+                    activityMainBinding.pbLoading.visibility = View.GONE //hide loading indicator
+                    if(response.isSuccessful && response.body()!=null) {
+                        Log.d("API Response", "Success: ${response.body()}") // Log the response
+                        setDataOnViews(response.body())
+                    }
+                    else {
+                        //handle API errors
+                        val errorMessage = when(response.code()) {
+                            404 -> "City not found"
+                            401 -> "Invalid API key"
+                            else -> "Unknown error"
+                        }
+                        Toast.makeText(applicationContext, errorMessage, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+            override fun onFailure(call: Call<ModelClass>, t: Throwable) {
+                runOnUiThread{
+                    activityMainBinding.pbLoading.visibility = View.GONE
+                    Toast.makeText(applicationContext, "Network error: ${t.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
+    }
 
     //@SuppressLint("SetTextI18n")
     private fun getCurrentLocation() {
@@ -358,7 +358,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object{
         private  const val  PERMISSION_REQUEST_ACCESS_LOCATION = 100
-        const val API_KEY = "618c2c71cae71f2816c3191b9cf58989" // input API key
+        const val API_KEY = "25fe3891c3f9dab6e259618892ec2507" // input API key
     }
 
     private fun checkPermission(): Boolean {

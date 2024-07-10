@@ -3,13 +3,11 @@ package com.example.a21521790_weather_app_mobile_final_project_bcu.POJO
 import com.google.gson.annotations.SerializedName
 
 data class Main(
-    @SerializedName("temp"       ) var temp      : Double? = null,
-    @SerializedName("feels_like" ) var feelsLike : Double? = null,
-    @SerializedName("temp_min"   ) var tempMin   : Double? = null,
-    @SerializedName("temp_max"   ) var tempMax   : Double? = null,
-    @SerializedName("pressure"   ) var pressure  : Int?    = null,
-    @SerializedName("humidity"   ) var humidity  : Int?    = null,
+    @SerializedName("temp") val temp: Double,
+    @SerializedName("feels_like") val feelsLike: Double,
+    @SerializedName("temp_min") val tempMin: Double,
+    @SerializedName("temp_max") val tempMax: Double,
+    @SerializedName("pressure") val pressure: Int,
+    @SerializedName("humidity") val humidity: Int
 
-    //@SerializedName("sea_level"  ) var seaLevel  : Int?    = null,
-    //@SerializedName("grnd_level" ) var grndLevel : Int?    = null
 )

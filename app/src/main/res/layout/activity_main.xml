@@ -113,7 +113,7 @@
                                 android:layout_weight="1"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/text_large"
-                                android:text="@string/day"/>
+                                android:text="@string/night"/>
 
                             <!--
                                                      <TextView

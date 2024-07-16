@@ -9,5 +9,4 @@ data class Main(
     @SerializedName("temp_max") val tempMax: Double,
     @SerializedName("pressure") val pressure: Int,
     @SerializedName("humidity") val humidity: Int
-
 )

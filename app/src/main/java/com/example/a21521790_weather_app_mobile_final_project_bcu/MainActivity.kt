@@ -8,6 +8,7 @@ import android.location.Location
 import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
+import android.os.Looper
 import android.provider.Settings
 import android.util.Log
 import android.view.View
@@ -24,6 +25,9 @@ import com.example.a21521790_weather_app_mobile_final_project_bcu.POJO.ModelClas
 import com.example.a21521790_weather_app_mobile_final_project_bcu.Utilities.APIUtilities
 import com.example.a21521790_weather_app_mobile_final_project_bcu.databinding.ActivityMainBinding
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import retrofit2.Call
 import retrofit2.Callback
@@ -118,7 +122,7 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    //@SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n")
     private fun getCurrentLocation() {
         if(checkPermission())
         {
@@ -158,6 +162,8 @@ class MainActivity : AppCompatActivity() {
             requestPermission()
         }
     }
+
+
 
     private fun fetchCurrentLocationWeather(latitude: String, longitude: String) {
         activityMainBinding.pbLoading.visibility = View.VISIBLE
